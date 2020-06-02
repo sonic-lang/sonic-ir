@@ -1,5 +1,4 @@
 {-# LANGUAGE DataKinds      #-}
-{-# LANGUAGE KindSignatures #-}
 {-# LANGUAGE TypeFamilies   #-}
 
 module Language.Sonic.Compiler.IR.Tree
