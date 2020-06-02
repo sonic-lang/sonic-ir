@@ -30,14 +30,26 @@ library
 
   -- cabal-fmt: expand src
   exposed-modules:
-  build-depends:      base >=4.11.0 && <5
+    Language.Sonic.Compiler.IR.Attribute
+    Language.Sonic.Compiler.IR.Declaration
+    Language.Sonic.Compiler.IR.EntityKind
+    Language.Sonic.Compiler.IR.Expression
+    Language.Sonic.Compiler.IR.Kind
+    Language.Sonic.Compiler.IR.Literal
+    Language.Sonic.Compiler.IR.Module
+    Language.Sonic.Compiler.IR.Pattern
+    Language.Sonic.Compiler.IR.Tree
+    Language.Sonic.Compiler.IR.Type
+
+  build-depends:
+      base        >=4.11.0 && <5
+    , containers
+    , text
+
   default-language:   Haskell2010
   default-extensions:
     DeriveDataTypeable
-    DeriveFoldable
-    DeriveFunctor
     DeriveGeneric
-    DeriveTraversable
     DuplicateRecordFields
 
   ghc-options:
