@@ -32,11 +32,8 @@ jobs:
     runs-on: ubuntu-16.04
     steps:
       - uses: actions/checkout@master
-      # TODO: Use the next version of brittany that supports PatternSynonyms
       - run: |
-          find . -name '*.hs' \
-            -not -path '*/Language/Sonic/Parser/Internal/Error.hs' \
-            -exec docker run -v $(pwd):/work herpinc/brittany:0.12.1.1 brittany --check-mode {} +
+          find . -name '*.hs' -exec docker run -v $(pwd):/work herpinc/brittany:0.12.1.1 brittany --check-mode {} +
   cabal-fmt:
     name: check .cabal style
     runs-on: ubuntu-16.04
