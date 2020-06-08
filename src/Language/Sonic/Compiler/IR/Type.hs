@@ -56,6 +56,6 @@ newtype Context x = Context (XWrap x [XWrap x (Predicate x)])
   deriving Generic
 
 data Predicate x
-  = Class (XWrap x (XRefID Class x)) (XWrap x [XWrap x (Type x)])
+  = Class (XWrap x (XRefID Class x)) [XWrap x (Type x)]
   | Equality (XWrap x (Type x)) (XWrap x (Type x))
   deriving Generic
