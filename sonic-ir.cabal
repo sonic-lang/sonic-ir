@@ -42,8 +42,9 @@ library
     Language.Sonic.Compiler.IR.Type
 
   build-depends:
-      base        >=4.11.0 && <5
+      base              >=4.11.0 && <5
     , containers
+    , mono-traversable
     , text
 
   default-language:   Haskell2010
@@ -51,6 +52,8 @@ library
     DeriveDataTypeable
     DeriveGeneric
     DuplicateRecordFields
+    FlexibleContexts
+    FlexibleInstances
 
   ghc-options:
     -Wall -Wcompat -Widentities -Wincomplete-record-updates
