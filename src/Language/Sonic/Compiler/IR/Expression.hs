@@ -34,6 +34,8 @@ import           Language.Sonic.Compiler.IR.Type
                                                 ( Type )
 import           Language.Sonic.Compiler.IR.Pattern
                                                 ( Pat )
+import           Language.Sonic.Compiler.IR.Attribute
+                                                ( Attrs )
 
 type family XVar x
 type family XCtor x
@@ -59,7 +61,8 @@ data Expr x
 
 data Bind x
   = Bind
-  { id    :: XWrap x (XDefID Var x)
+  { attrs :: XWrap x (Attrs x)
+  , id    :: XWrap x (XDefID Var x)
   , type_ :: Maybe (XWrap x (Type x))
   , rhs   :: XWrap x (Expr x)
   }
