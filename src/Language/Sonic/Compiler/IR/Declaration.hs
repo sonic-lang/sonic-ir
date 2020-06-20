@@ -36,8 +36,8 @@ data DataDecl x
   = DataDecl
   { attrs :: XWrap x (Attrs x)
   , name  :: XWrap x (XDefID TyCtor x)
-  , vars  :: XWrap x [XWrap x (TyVarBinder x)]
-  , ctors :: XWrap x [XWrap x (DataCtorDecl x)]
+  , vars  :: [XWrap x (TyVarBinder x)]
+  , ctors :: [XWrap x (DataCtorDecl x)]
   }
   deriving Generic
 
@@ -54,9 +54,10 @@ data ClassDecl x
   { attrs        :: XWrap x (Attrs x)
   , context      :: XWrap x (Context x)
   , name         :: XWrap x (XDefID Class x)
-  , vars         :: XWrap x [XWrap x (TyVarBinder x)]
-  , methods      :: XWrap x [XWrap x (ClassMethodDecl x)]
-  , defaultBinds :: XWrap x [XWrap x (BindGroup x)]
+  , vars         :: [XWrap x (TyVarBinder x)]
+  , methods      :: [XWrap x (ClassMethodDecl x)]
+  -- | Note that 'BindGroup' in 'defaultBinds' may not contain corresponding type signatures in each binds
+  , defaultBinds :: [XWrap x (BindGroup x)]
   }
   deriving Generic
 
@@ -73,7 +74,7 @@ data InstanceDecl x
   { attrs   :: XWrap x (Attrs x)
   , context :: XWrap x (Context x)
   , name    :: XWrap x (XRefID Class x)
-  , types   :: XWrap x [XWrap x (Type x)]
-  , methods :: XWrap x [XWrap x (BindGroup x)]
+  , types   :: [XWrap x (Type x)]
+  , methods :: [XWrap x (BindGroup x)]
   }
   deriving Generic

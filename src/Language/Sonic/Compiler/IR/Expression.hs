@@ -54,7 +54,7 @@ data Expr x
   | Apply    !(XApply    x) (XWrap x (Expr x)) (XWrap x (Expr x))
   | Lambda   !(XLambda   x) (XWrap x (XDefID Var x)) (XWrap x (Expr x))
   | Annotate !(XAnnotate x) (XWrap x (Expr x)) (XWrap x (Type x))
-  | Let      !(XLet      x) (XWrap x [XWrap x (BindGroup x)]) (XWrap x (Expr x))
+  | Let      !(XLet      x) [XWrap x (BindGroup x)] (XWrap x (Expr x))
   | Case     !(XCase     x) (XWrap x (Expr x)) (XWrap x [XWrap x (CaseArm x)])
   | XExpr    !(XXExpr    x)
   deriving Generic

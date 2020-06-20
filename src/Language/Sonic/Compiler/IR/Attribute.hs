@@ -42,8 +42,8 @@ data Attr x
   deriving Generic
 
 data AttrValue x
-  = TextValue (XWrap x Text)
-  | RefValue  (XWrap x (EntityRef x))
+  = TextValue Text
+  | RefValue  (EntityRef x)
   deriving Generic
 
 data EntityRef x
