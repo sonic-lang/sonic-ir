@@ -1,5 +1,8 @@
+{-# LANGUAGE TypeFamilies #-}
+
 module Language.Sonic.Compiler.IR.Module
   ( Module(..)
+  , XModule
   )
 where
 
@@ -9,12 +12,23 @@ import           Language.Sonic.Compiler.IR.Tree
                                                 ( XWrap )
 import           Language.Sonic.Compiler.IR.Attribute
                                                 ( Attrs )
+import           Language.Sonic.Compiler.IR.Expression
+                                                ( BindGroup )
 import           Language.Sonic.Compiler.IR.Declaration
-                                                ( Decl )
+                                                ( DataDecl
+                                                , ClassDecl
+                                                , InstanceDecl
+                                                )
+
+type family XModule    x
 
 data Module x
   = Module
-  { attrs :: XWrap x [XWrap x (Attrs x)]
-  , decls :: XWrap x [XWrap x (Decl x)]
+  { attrs         :: [XWrap x (Attrs x)]
+  , bindings      :: [XWrap x (BindGroup x)]
+  , dataDecls     :: [XWrap x (DataDecl x)]
+  , classDecls    :: [XWrap x (ClassDecl x)]
+  , instanceDecls :: [XWrap x (InstanceDecl x)]
+  , extension     :: XModule x
   }
   deriving Generic

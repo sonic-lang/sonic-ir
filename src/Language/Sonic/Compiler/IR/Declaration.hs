@@ -1,15 +1,11 @@
 {-# LANGUAGE TypeFamilies #-}
 
 module Language.Sonic.Compiler.IR.Declaration
-  ( Decl(..)
-  , DataDecl(..)
+  ( DataDecl(..)
   , ClassDecl(..)
   , InstanceDecl(..)
-  , XBind
-  , XData
-  , XClass
-  , XInstance
-  , XXDecl
+  , DataCtorDecl(..)
+  , ClassMethodDecl(..)
   )
 where
 
@@ -35,27 +31,6 @@ import           Language.Sonic.Compiler.IR.Attribute
                                                 ( Attrs )
 import           Language.Sonic.Compiler.IR.Expression
                                                 ( BindGroup )
-
-type family XBind     x
-type family XData     x
-type family XClass    x
-type family XInstance x
-type family XXDecl    x
-
-data Decl x
-  = Bind     !(XBind     x) (XWrap x (BindDecl x))
-  | Data     !(XData     x) (XWrap x (DataDecl x))
-  | Class    !(XClass    x) (XWrap x (ClassDecl x))
-  | Instance !(XInstance x) (XWrap x (InstanceDecl x))
-  | XDecl    !(XXDecl    x)
-  deriving Generic
-
-data BindDecl x
-  = BindDecl
-  { attrs  :: XWrap x (Attrs x)
-  , groups :: XWrap x [XWrap x (BindGroup x)]
-  }
-  deriving Generic
 
 data DataDecl x
   = DataDecl
