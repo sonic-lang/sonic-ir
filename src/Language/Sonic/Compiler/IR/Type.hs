@@ -1,4 +1,6 @@
-{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE TypeFamilies               #-}
+{-# LANGUAGE DerivingStrategies         #-}
+{-# LANGUAGE GeneralizedNewtypeDeriving #-}
 
 module Language.Sonic.Compiler.IR.Type
   ( Type(..)
@@ -52,8 +54,9 @@ data TyVarBinder x
   }
   deriving Generic
 
-newtype Context x = Context (XWrap x [XWrap x (Predicate x)])
+newtype Context x = Context [XWrap x (Predicate x)]
   deriving Generic
+  deriving newtype (Semigroup, Monoid)
 
 data Predicate x
   = Class (XWrap x (XRefID Class x)) [XWrap x (Type x)]
