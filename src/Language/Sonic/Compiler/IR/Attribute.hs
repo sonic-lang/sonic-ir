@@ -1,3 +1,6 @@
+{-# LANGUAGE DerivingStrategies         #-}
+{-# LANGUAGE GeneralizedNewtypeDeriving #-}
+
 module Language.Sonic.Compiler.IR.Attribute
   ( Attrs(..)
   , AttrKey(..)
@@ -29,6 +32,7 @@ newtype AttrKey = AttrKey Text
 
 newtype Attrs x = Attrs (Map AttrKey (XWrap x (Attr x)))
   deriving Generic
+  deriving newtype (Semigroup, Monoid)
 
 data Attr x
   = Name
