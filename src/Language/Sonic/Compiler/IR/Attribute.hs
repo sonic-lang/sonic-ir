@@ -28,7 +28,7 @@ import           Language.Sonic.Compiler.IR.EntityKind
                                                 )
 
 newtype AttrKey = AttrKey Text
-  deriving (Eq, Ord, Generic)
+  deriving (Show, Eq, Ord, Generic)
 
 newtype Attrs x = Attrs (Map AttrKey (XWrap x (Attr x)))
   deriving Generic

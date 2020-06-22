@@ -8,4 +8,4 @@ import           GHC.Generics                   ( Generic )
 data Literal
   = Integer Integer
   | Char Char
-  deriving Generic
+  deriving (Show, Eq, Generic)
