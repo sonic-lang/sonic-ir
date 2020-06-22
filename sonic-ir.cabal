@@ -40,6 +40,7 @@ library
     Language.Sonic.Compiler.IR.Pattern
     Language.Sonic.Compiler.IR.Tree
     Language.Sonic.Compiler.IR.Type
+    Language.Sonic.Compiler.IR
 
   build-depends:
       base              >=4.11.0 && <5
